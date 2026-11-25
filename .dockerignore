@@ -1,0 +1,7 @@
+data
+models
+results
+notebook
+.git
+__pycache__
+*.ipynb

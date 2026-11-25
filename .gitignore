@@ -1,0 +1,15 @@
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.env
+# dataset is NOT committed (re-create it with: python -m src.data_acquisition)
+data/train/*
+data/test/*
+data/uploads/*
+data/*.db
+data/feature_stats.csv
+!data/**/.gitkeep
+models/archive/
+results/*.csv
+results/*.html
+!results/summary.md
