@@ -137,17 +137,21 @@ async def upload_zip(file: UploadFile = File(...)):
     infos = [i for i in zf.infolist() if not i.is_dir()]
     if len(infos) > MAX_ZIP_FILES or sum(i.file_size for i in infos) > MAX_ZIP_BYTES:
         raise HTTPException(413, "Zip too large")
-    saved, skipped = 0, 0
+    saved, skipped, skipped_examples = 0, 0, []
     for info in infos:
-        parts = Path(info.filename).parts
+        name = info.filename.replace("\\", "/")   # zips made by Windows PowerShell use backslashes
+        parts = Path(name).parts
         label = parts[-2] if len(parts) >= 2 else None
-        if label in classes_ and Path(info.filename).suffix.lower() in config.IMAGE_EXTS:
-            _save_upload(zf.read(info), label, Path(info.filename).name)
+        if label in classes_ and Path(name).suffix.lower() in config.IMAGE_EXTS:
+            _save_upload(zf.read(info), label, Path(name).name)
             saved += 1
         else:
             skipped += 1
+            if len(skipped_examples) < 3:
+                skipped_examples.append(name)
     pending, triggered = _maybe_auto_retrain()
-    return {"saved": saved, "skipped": skipped, "pending_total": pending, "auto_retrain_started": triggered,
+    return {"saved": saved, "skipped": skipped, "skipped_examples": skipped_examples,
+            "pending_total": pending, "auto_retrain_started": triggered,
             "retrain_threshold": config.RETRAIN_THRESHOLD}
 
 
