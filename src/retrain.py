@@ -5,6 +5,7 @@ Steps: 1) take pending uploads from the database  2) preprocess them into data/t
        5) compare with the old model on the test set and only replace it if it is not worse.
 """
 import logging
+import os
 import shutil
 import threading
 
@@ -13,7 +14,8 @@ from src.model import compile_model, default_callbacks, evaluate_model, load_cla
 from src.preprocessing import build_datasets, compute_class_weights, validate_and_standardise
 
 log = logging.getLogger("retrain")
-ACCEPT_TOLERANCE = 0.005  # new model may be at most 0.5 points worse in accuracy and still be accepted
+# the new model may be at most this much worse in accuracy (0.005 = 0.5 points) and still be accepted
+ACCEPT_TOLERANCE = float(os.getenv("ACCEPT_TOLERANCE", "0.005"))
 
 
 def integrate_uploads() -> tuple[int, int]:
