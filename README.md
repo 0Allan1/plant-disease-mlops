@@ -7,9 +7,9 @@ API → web UI → Docker → cloud deployment → load testing with Locust.
 | | |
 |---|---|
 | 🎥 **Video demo (YouTube)** | `PASTE_YOUTUBE_LINK_HERE` |
-| 🌍 **Live UI** |  |
-| 🔌 **Live API (Swagger docs)** | `PASTE_PUBLIC_API_URL_HERE` (example: `http://<VM_IP>:8000/docs`) |
-| 💻 **GitHub repo** | `PASTE_GITHUB_REPO_URL_HERE` |
+| 🌍 **Live UI** | http://51.20.10.204:8501/ |
+| 🔌 **Live API (Swagger docs)** | http://51.20.10.204:8000/docs#/ |
+| 💻 **GitHub repo** | https://github.com/0Allan1/plant-disease-mlops.git |
 
 
 
