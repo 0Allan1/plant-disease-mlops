@@ -6,7 +6,7 @@ API → web UI → Docker → cloud deployment → load testing with Locust.
 
 | | |
 |---|---|
-| 🎥 **Video demo (YouTube)** | `PASTE_YOUTUBE_LINK_HERE` |
+| 🎥 **Video demo ** | https://youtu.be/NNqaDb0d9QQ |
 | 🌍 **Live UI** | http://51.20.10.204:8501/ |
 | 🔌 **Live API (Swagger docs)** | http://51.20.10.204:8000/docs#/ |
 | 💻 **GitHub repo** | https://github.com/0Allan1/plant-disease-mlops.git |
@@ -56,7 +56,7 @@ plant-disease-mlops/
 ## 4. Setup (local, no Docker needed)
 
 ```bash
-git clone PASTE_GITHUB_REPO_URL_HERE && cd plant-disease-mlops
+git clone https://github.com/0Allan1/plant-disease-mlops.git && cd plant-disease-mlops
 python -m venv .venv
 source .venv/bin/activate            # Windows PowerShell: .venv\Scripts\Activate.ps1
 pip install -r requirements.txt -r requirements-ui.txt
